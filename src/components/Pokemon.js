@@ -1,16 +1,16 @@
 import React, { useEffect } from "react";
-import { useCounterStore } from "../Store";
+import { usePokemonStore } from "../Store";
 
 const Pokemon = () => {
-  const getPokemons = useCounterStore((state) => state.fetchPokemon);
-  const pokemonList = useCounterStore((state) => state.pokemon);
+  const getPokemons = usePokemonStore((state) => state.getPokemons);
+  const pokemonList = usePokemonStore((state) => state.pokemonList);
 
   useEffect(() => {
     getPokemons();
   }, [getPokemons]);
 
   if (!pokemonList.length) {
-    return <p>Loading...</p>;
+    return <p>Loading Pokemons...</p>;
   }
 
   return (
