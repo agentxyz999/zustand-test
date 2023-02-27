@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
+// pokemon store starts here
 export const usePokemonStore = create((set) => ({
   pokemonList: [],
   getPokemons: async () => {
@@ -9,8 +10,9 @@ export const usePokemonStore = create((set) => ({
       .then((data) => set({ pokemonList: data.results }));
   },
 }));
+// pokemon store ends here
 
-// do this so the counter will persist
+// counter store start here
 let counterStore = (set, get) => ({
   number: 0,
   increment: () => set((state) => ({ number: state.number + 1 })),
@@ -29,6 +31,7 @@ let counterStore = (set, get) => ({
 counterStore = persist(counterStore, { name: "counter" });
 // and export
 export const useCounterStore = create(counterStore);
+// counter store ends here
 
 // User_settings or Dark mode
 let userSettingsStore = (set) => ({
@@ -37,3 +40,13 @@ let userSettingsStore = (set) => ({
 });
 userSettingsStore = persist(userSettingsStore, { name: "mode" });
 export const useUserSettingsStore = create(userSettingsStore);
+
+// people store starts here
+let peopleStore = (set) => ({
+  people: [],
+  addPerson: (person) =>
+    set((state) => ({ people: [...state.people, person] })),
+});
+peopleStore = persist(peopleStore, { name: "people" });
+export const usePeopleStore = create(peopleStore);
+// people store ends here
