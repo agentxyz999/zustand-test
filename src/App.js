@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import AddPerson from "./components/AddPerson";
 import Counter from "./components/Counter";
 import Pokemon from "./components/Pokemon";
 import { useUserSettingsStore } from "./Store";
@@ -18,6 +19,7 @@ const App = () => {
     <>
       <button onClick={toggleDarkModeBtn}>Toggle DarkMode</button>
       <Counter />
+      <AddPerson />
       <Pokemon />
     </>
   );

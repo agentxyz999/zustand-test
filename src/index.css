@@ -5,6 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding: 0 2rem;
+  width: 50vw;
 }
 
 code {
@@ -16,9 +18,8 @@ code {
   height: auto;
   border: 1px solid;
   padding: 20px;
-  margin: 0 auto;
 }
-button {
+.counter__container button {
   padding: 20px;
   display: block;
   margin: 10px auto;
@@ -35,7 +36,7 @@ h2 {
   margin: 0 auto;
   text-align: center;
 }
-.inline__btn {
+.inline__btn_container .inline__btn {
   display: inline-block;
   margin: 20px;
   padding: 10px;
@@ -43,4 +44,8 @@ h2 {
 .darkMode {
   color: #eee;
   background-color: #444;
+}
+/* Persons */
+.person__container {
+  float: right;
 }

@@ -8,7 +8,6 @@ const Pokemon = () => {
   useEffect(() => {
     getPokemons();
   }, [getPokemons]);
-
   if (!pokemonList.length) {
     return <p>Loading Pokemons...</p>;
   }
