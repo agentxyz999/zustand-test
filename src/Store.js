@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
 export const usePokemonStore = create((set) => ({
   pokemonList: [],
@@ -9,7 +10,8 @@ export const usePokemonStore = create((set) => ({
   },
 }));
 
-export const useCounterStore = create((set, get) => ({
+// do this so the counter will persist
+let counterStore = (set, get) => ({
   number: 0,
   increment: () => set((state) => ({ number: state.number + 1 })),
   decrement: () =>
@@ -20,4 +22,18 @@ export const useCounterStore = create((set, get) => ({
   logNumber: () => {
     console.log(` Current number value equals ${get().number}`);
   },
-}));
+  //reset counter
+  reset: () => set((state) => ({ number: 0 })),
+});
+// then
+counterStore = persist(counterStore, { name: "counter" });
+// and export
+export const useCounterStore = create(counterStore);
+
+// User_settings or Dark mode
+let userSettingsStore = (set) => ({
+  darkMode: false,
+  toggleDarkMode: () => set((state) => ({ darkMode: !state.darkMode })),
+});
+userSettingsStore = persist(userSettingsStore, { name: "mode" });
+export const useUserSettingsStore = create(userSettingsStore);

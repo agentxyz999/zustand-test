@@ -31,3 +31,16 @@ h2 {
   text-align: center;
   font-size: 50px;
 }
+.inline__btn_container {
+  margin: 0 auto;
+  text-align: center;
+}
+.inline__btn {
+  display: inline-block;
+  margin: 20px;
+  padding: 10px;
+}
+.darkMode {
+  color: #eee;
+  background-color: #444;
+}
